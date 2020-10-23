@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="edit_margin_horizontal">16dp</dimen>
+    <dimen name="edit_margin_vertical">32dp</dimen>
+    <dimen name="btn_register_margin_vertical">16dp</dimen>
+    <dimen name="btn_text_size">20sp</dimen>
+    <dimen name="txt_profile_name_size">20sp</dimen>
+    <dimen name="profile_item_padding">25dp</dimen>
+    <dimen name="profile_item_card_corner_radius">10dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="txt_add_profile_title_size">27sp</dimen>
+    <dimen name="input_profile_margin_vertical">30dp</dimen>
+    <dimen name="input_profile_margin_horizontal">30dp</dimen>
+    <dimen name="input_profile_corner_radius">10dp</dimen>
+    <dimen name="btn_actions_margin_vertical">30dp</dimen>
+    <dimen name="txt_add_profile_title_margin_top">10dp</dimen>
+    <dimen name="txt_user_phone_size">15sp</dimen>
+</resources>

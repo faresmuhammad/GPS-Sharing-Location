@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_add_profile_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/txt_add_profile_title_margin_top"
+        android:text="@string/add_profile_title"
+        android:textColor="@android:color/background_dark"
+        android:textSize="@dimen/txt_add_profile_title_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/input_profile_margin_horizontal"
+        android:layout_marginVertical="@dimen/input_profile_margin_vertical"
+        android:hint="@string/edit_profile_hint"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="@dimen/input_profile_corner_radius"
+        app:boxCornerRadiusBottomStart="@dimen/input_profile_corner_radius"
+        app:boxCornerRadiusTopEnd="@dimen/input_profile_corner_radius"
+        app:boxCornerRadiusTopStart="@dimen/input_profile_corner_radius"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_add_profile_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/btn_actions_margin_vertical"
+        android:text="@string/btn_add_profile_text"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cancel"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_profile" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_cancel_text"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_add_profile"
+        app:layout_constraintTop_toTopOf="@+id/btn_add_profile" />
+</androidx.constraintlayout.widget.ConstraintLayout>

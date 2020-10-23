@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">GPS Sharing Location</string>
+    <string name="api_key" translatable="false">Your Api Key</string>
+    <string name="phone_hint">Phone</string>
+    <string name="register">Register</string>
+    <string name="verification_code_hint">Verification Code</string>
+    <string name="verify">Verify</string>
+    <string name="resend">Resend</string>
+    <string name="status_code_sent">Code Sent</string>
+    <string name="status_verification_failed">Verification Failed</string>
+    <string name="status_verification_succeeded">Verification Succeeded</string>
+    <string name="status_sign_in_failed">Sign-in failed</string>
+    <string name="sign_in">Sign in</string>
+    <string name="add_profile_title">Add Profile</string>
+    <string name="edit_profile_hint">Profile Name</string>
+    <string name="btn_add_profile_text">Add</string>
+    <string name="btn_cancel_text">Cancel</string>
+    <string name="firestore_profiles_collection">profiles</string>
+    <string name="username_hint">Username</string>
+    <string name="sign_out">Sign out</string>
+    <string name="action_add_user">Add User</string>
+    <string name="add_user_title">Add User</string>
+    <string name="edit_user_hint">User Code</string>
+
+</resources>

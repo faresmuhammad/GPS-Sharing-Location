@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="authViewModel"
+            type="com.fares.gpssharinglocation.ui.activities.auth.AuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.activities.auth.AuthActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/edit_margin_horizontal"
+            android:hint="@string/username_hint"
+            app:boxBackgroundMode="outline"
+            app:layout_constraintBottom_toTopOf="@+id/verification_code"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:singleLine="true"
+                android:text="@={authViewModel.username}" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/verification_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/edit_margin_horizontal"
+            android:hint="@string/verification_code_hint"
+            app:boxBackgroundMode="outline"
+            app:layout_constraintBottom_toTopOf="@+id/phone"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_vcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="number"
+                android:singleLine="true"
+                android:text="@={authViewModel.verificationCode}" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/code_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_defaultNameCode="EG"
+                app:ccp_autoFormatNumber="true"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/register_phone_input"
+                app:layout_constraintEnd_toStartOf="@+id/register_phone_input"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/register_phone_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/edit_margin_horizontal"
+                android:hint="@string/phone_hint"
+                app:boxBackgroundMode="outline"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:text="@={authViewModel.phoneEdit}" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/edit_margin_horizontal"
+            android:layout_marginVertical="@dimen/btn_register_margin_vertical"
+            android:text="@string/register"
+            android:textSize="@dimen/btn_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_verify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/edit_margin_horizontal"
+            android:layout_marginVertical="@dimen/btn_register_margin_vertical"
+            android:text="@string/verify"
+            android:textSize="@dimen/btn_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_resend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/edit_margin_horizontal"
+            android:layout_marginVertical="@dimen/btn_register_margin_vertical"
+            android:text="@string/resend"
+            android:textSize="@dimen/btn_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_verify" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
