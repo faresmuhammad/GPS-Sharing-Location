@@ -2,7 +2,7 @@ object Versions {
     const val kotlin = "1.3.72"
     const val material = "1.3.0-alpha01"
     const val dagger = "2.28.1"
-    const val firebaseAuth = "19.3.2"
+    const val firebaseAuth = "20.0.0"
     const val firebaseFirestore = "21.5.0"
     const val firebaseAnalytics = "17.2.2"
     const val lifecycle = "2.2.0"

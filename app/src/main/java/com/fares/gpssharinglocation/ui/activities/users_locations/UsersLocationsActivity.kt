@@ -257,6 +257,7 @@ class UsersLocationsActivity : BaseActivity(), OnMapReadyCallback {
         getUsers(userClient, profileName)
         userAdapter.setOnItemClickListener { user, _ ->
             vm.getUserLocationFromUser(user) {
+                Timber.d("${user.phoneNumber} -> ${it.geo_point}")
                 setCameraView(it.geo_point)
             }
         }

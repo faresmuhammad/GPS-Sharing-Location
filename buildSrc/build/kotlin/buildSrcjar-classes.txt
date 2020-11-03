@@ -1,1 +1,1 @@
-D:\Applications\Kotlin\GPS Friends Tracker Files\GPS Sharing Location\buildSrc\build\classes\kotlin\main\Deps.class;D:\Applications\Kotlin\GPS Friends Tracker Files\GPS Sharing Location\buildSrc\build\classes\kotlin\main\Versions.class
+K:\Android Development\Android Projects\Applications\Kotlin\GPS Friends Tracker Files\GPS Sharing Location\buildSrc\build\classes\kotlin\main\Deps.class;K:\Android Development\Android Projects\Applications\Kotlin\GPS Friends Tracker Files\GPS Sharing Location\buildSrc\build\classes\kotlin\main\Versions.class
