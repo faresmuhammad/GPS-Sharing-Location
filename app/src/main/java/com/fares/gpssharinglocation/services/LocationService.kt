@@ -13,7 +13,7 @@ import android.os.IBinder
 import android.os.Looper
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
-import com.fares.gpssharinglocation.GPSTrackerApp
+import com.fares.gpssharinglocation.GPSSharingApp
 import com.fares.gpssharinglocation.model.UserLocation
 import com.fares.gpssharinglocation.utils.Constants.CHANNEL_ID
 import com.fares.gpssharinglocation.utils.Constants.FASTEST_INTERVAL
@@ -48,7 +48,7 @@ class LocationService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        (application as GPSTrackerApp).appComponent.locationComponentFactory.create().inject(this)
+        (application as GPSSharingApp).appComponent.locationComponentFactory.create().inject(this)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         if (Build.VERSION.SDK_INT >= 26) {
@@ -79,7 +79,6 @@ class LocationService : Service() {
 
 
     private var onLocationChanged: ((UserLocation) -> Unit)? = null
-//    private var onLocationChanged: (Location) -> Unit = {}
 
 
     private fun getLocation() {
@@ -108,8 +107,8 @@ class LocationService : Service() {
             object : LocationCallback() {
                 override fun onLocationResult(result: LocationResult?) {
                     Timber.d("onLocationResult: got location result.")
-                    if ((application as GPSTrackerApp).isUserNull()) {
-                        Timber.d("is user null -> ${(application as GPSTrackerApp).isUserNull()}")
+                    if ((application as GPSSharingApp).isUserNull) {
+                        Timber.d("is user null -> ${(application as GPSSharingApp).isUserNull}")
                         stopSelf()
                     } else {
                         setLocationResult(result)
@@ -120,7 +119,7 @@ class LocationService : Service() {
                 private fun setLocationResult(result: LocationResult?) {
                     val location = result?.lastLocation!!
                     val geoPoint = GeoPoint(location.latitude, location.longitude)
-                    val user = (application as GPSTrackerApp).user
+                    val user = (application as GPSSharingApp).user
                     Timber.d("onLocationResult: GeoPoint --> $geoPoint")
 
                     val userLocation = UserLocation(user!!, geoPoint)

@@ -23,7 +23,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.fares.gpssharinglocation.BR
-import com.fares.gpssharinglocation.GPSTrackerApp
+import com.fares.gpssharinglocation.GPSSharingApp
 import com.fares.gpssharinglocation.R
 import com.fares.gpssharinglocation.ViewModelProviderFactory
 import com.fares.gpssharinglocation.databinding.ActivityProfilesBinding
@@ -144,8 +144,8 @@ class ProfilesActivity : BaseActivity(), View.OnClickListener {
         )
 
 
-        (application as GPSTrackerApp).user = mUser
-        userClient = (application as GPSTrackerApp).user!!
+        (application as GPSSharingApp).user = mUser
+        userClient = (application as GPSSharingApp).user!!
     }
 
     override fun onResume() {
@@ -351,7 +351,7 @@ class ProfilesActivity : BaseActivity(), View.OnClickListener {
         mUser = null
         vm.removeKeys(USER_ID_KEY, USER_USERNAME_KEY, USER_PHONE_NUMBER_KEY)
         profileBundle.clear()
-        (application as GPSTrackerApp).user = null
+        (application as GPSSharingApp).user = null
     }
 
     /**

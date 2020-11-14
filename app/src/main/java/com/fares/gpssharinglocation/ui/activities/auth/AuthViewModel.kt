@@ -4,14 +4,8 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.fares.gpssharinglocation.data.AppPreferences
 import com.fares.gpssharinglocation.di.annotations.AuthScope
-import com.fares.gpssharinglocation.model.User
-import com.fares.gpssharinglocation.utils.Constants.USERS_COLLECTION
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
-import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.auth.*
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -28,13 +22,10 @@ open class AuthViewModel @Inject constructor(
     val user = auth.currentUser
 
 
-
     //Sign up fields
     val username = ObservableField<String>()
     val phoneEdit = ObservableField<String>()
     val verificationCode = ObservableField<String>()
-
-
 
 
     var prefPhoneNumber: String?
@@ -58,15 +49,14 @@ open class AuthViewModel @Inject constructor(
         phoneNumber: String,
         callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     ) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            phoneNumber,
-            60,
-            TimeUnit.SECONDS,
-            activity,
-            callbacks
-        )
+        val options = PhoneAuthOptions.newBuilder().apply {
+            setPhoneNumber(phoneNumber)
+            setTimeout(60,TimeUnit.SECONDS)
+            setActivity(activity)
+            setCallbacks(callbacks)
+        }.build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
     }
-
 
 
     fun verifyPhoneNumberWithCode(
@@ -81,17 +71,17 @@ open class AuthViewModel @Inject constructor(
     fun resendVerificationCode(
         activity: AuthActivity,
         phoneNumber: String,
-        token: PhoneAuthProvider.ForceResendingToken?,
+        token: () -> PhoneAuthProvider.ForceResendingToken?,
         callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     ) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            phoneNumber, // Phone number to verify
-            60, // Timeout duration
-            TimeUnit.SECONDS, // Unit of timeout
-            activity, // Activity (for callback binding)
-            callbacks, // OnVerificationStateChangedCallbacks
-            token
-        ) // ForceResendingToken from callbacks
+        val options = PhoneAuthOptions.newBuilder().apply {
+            setPhoneNumber(phoneNumber)
+            setTimeout(60,TimeUnit.SECONDS)
+            setActivity(activity)
+            setCallbacks(callbacks)
+            setForceResendingToken(token()!!)
+        }.build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
     fun signInWithAuthPhoneCredential(
@@ -109,15 +99,5 @@ open class AuthViewModel @Inject constructor(
     }
 
 
-    /*
-    ------------------------------------------------ Firestore ----------------------------------------------
-     */
-
-    fun insertUser(user: User, doIfCompleted: (Task<DocumentReference>) -> Unit) {
-        val usersRef = firestore.collection(USERS_COLLECTION)
-        usersRef.add(user).addOnCompleteListener {
-            doIfCompleted(it)
-        }
-    }
 
 }

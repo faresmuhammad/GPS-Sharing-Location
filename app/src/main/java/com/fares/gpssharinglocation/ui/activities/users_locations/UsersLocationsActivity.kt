@@ -18,7 +18,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.fares.gpssharinglocation.BR
-import com.fares.gpssharinglocation.GPSTrackerApp
+import com.fares.gpssharinglocation.GPSSharingApp
 import com.fares.gpssharinglocation.R
 import com.fares.gpssharinglocation.ViewModelProviderFactory
 import com.fares.gpssharinglocation.databinding.ActivityUsersLocationsBinding
@@ -122,7 +122,7 @@ class UsersLocationsActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun init() {
         mapView = binding.mapView
-        userClient = (application as GPSTrackerApp).user!!
+        userClient = (application as GPSSharingApp).user!!
         extras = intent.extras!!
         profileName = extras.get(PROFILE_NAME_INTENT_EXTRA) as String
         userAdapter = UserAdapter()
@@ -264,6 +264,7 @@ class UsersLocationsActivity : BaseActivity(), OnMapReadyCallback {
 
         userAdapter.setOnItemLongClickListener { user, _ ->
             vm.deleteUser(userClient, user, profileName)
+            getUsers(userClient, profileName)
         }
 
 

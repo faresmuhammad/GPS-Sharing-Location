@@ -8,7 +8,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.fares.gpssharinglocation.BR
-import com.fares.gpssharinglocation.GPSTrackerApp
+import com.fares.gpssharinglocation.GPSSharingApp
 import com.fares.gpssharinglocation.ViewModelProviderFactory
 import com.fares.gpssharinglocation.databinding.ActivityAuthBinding
 import com.fares.gpssharinglocation.ui.activities.auth.AuthState.*
@@ -70,7 +70,7 @@ class AuthActivity() : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
-        (application as GPSTrackerApp).appComponent.authComponentFactory.create()
+        (application as GPSSharingApp).appComponent.authComponentFactory.create()
         super.onCreate(savedInstanceState)
         performDataBinding(this.factory)
 
@@ -291,8 +291,13 @@ class AuthActivity() : BaseActivity(), View.OnClickListener {
                 vm.resendVerificationCode(
                     this,
                     binding.codePicker.selectedCountryCodeWithPlus + vm.phoneEdit.get()!!,
-                    resendToken,
-                    callbacks
+                    token = {
+                        if (::resendToken.isInitialized)
+                            resendToken
+                        else
+                            null
+                    },
+                    callbacks = callbacks
                 )
             }
 

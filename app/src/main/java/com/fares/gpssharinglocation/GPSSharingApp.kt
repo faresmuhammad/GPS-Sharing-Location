@@ -7,7 +7,7 @@ import dagger.android.DaggerApplication
 import timber.log.Timber
 
 
-class GPSTrackerApp : DaggerApplication() {
+class GPSSharingApp : DaggerApplication() {
 
     var user: User? = null
         get() = field
@@ -16,8 +16,9 @@ class GPSTrackerApp : DaggerApplication() {
         }
 
 
-    fun isUserNull() = user == null
-//    val isUserNull = user == null
+//        fun isUserNull() = user == null
+    val isUserNull: Boolean
+        get() = user == null
 
     override fun onCreate() {
         super.onCreate()

@@ -1,7 +1,7 @@
 package com.fares.gpssharinglocation.di.component
 
 import android.app.Application
-import com.fares.gpssharinglocation.GPSTrackerApp
+import com.fares.gpssharinglocation.GPSSharingApp
 import com.fares.gpssharinglocation.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
@@ -20,7 +20,7 @@ import javax.inject.Singleton
         FirebaseModule::class
     ]
 )
-interface AppComponent : AndroidInjector<GPSTrackerApp> {
+interface AppComponent : AndroidInjector<GPSSharingApp> {
 
     fun inject(application: Application)
 //    fun inject(service: LocationService)
